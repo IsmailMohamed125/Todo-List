@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1 class="app-title">TO-DO App</h1>
+      </header>
+      <div class="sidebar">
+        <div class="notifs">
+          <div class="notif">
+            <div class="add-task">
+              <button id="showDialogBtn" class="btn-task">
+                <svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+              </button>
+              <dialog id="exampleDialog">
+                <div class="form-container">
+                  <form class="task-form" onsubmit="submitForm(event)">
+                    <legend class="form-instructions">Add task</legend>
+                    <div class="task-info">
+                      <div class="task-title input-group">
+                        <label for="title">Title:</label>
+                        <input
+                          type="text"
+                          id="title"
+                          name="title"
+                          placeholder="My activity"
+                        />
+                        <span id="titleError" class="error"></span>
+                      </div>
+                      <div class="task-date input-group">
+                        <label for="date">Date:</label>
+                        <input type="date" name="date" id="date" />
+                        <span id="dateError" class="error"></span>
+                      </div>
+                      <div class="task-description input-group">
+                        <label for="description">Description:</label>
+                        <textarea
+                          name="description"
+                          placeholder="Information about my activity"
+                          id="description"
+                          cols="30"
+                          rows="10"
+                        ></textarea>
+                        <span id="descriptionError" class="error"></span>
+                      </div>
+                      <div class="task-importance input-group">
+                        <label for="priority">Priority:</label>
+
+                        <select name="priority" id="priority">
+                          <option value="high">High</option>
+                          <option value="medium">Medium</option>
+                          <option value="low">Low</option>
+                        </select>
+                      </div>
+                      <div class="task-project input-group">
+                        <label for="project">Project:</label>
+
+                        <select name="project" id="project"></select>
+
+                        <span id="projectError" class="error"></span>
+                      </div>
+                    </div>
+                    <div class="buttons-container">
+                      <button type="button" id="submitAndClose">Add</button>
+                      <button type="button" id="closeDialogBtn">Close</button>
+                    </div>
+                    <input type="hidden" id="taskId" name="taskId" value="" />
+                  </form>
+                </div>
+              </dialog>
+            </div>
+            <div class="notif-title">Add task</div>
+          </div>
+          <div class="notif select visited home">
+            <div class="notif-image">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 3H5A2 2 0 0 0 3 5V19A2 2 0 0 0 5 21H19A2 2 0 0 0 21 19V5A2 2 0 0 0 19 3M5 19V17H8.13A4.13 4.13 0 0 0 9.4 19M19 19H14.6A4.13 4.13 0 0 0 15.87 17H19M19 15H14V16A2 2 0 0 1 10 16V15H5V5H19Z"
+                />
+              </svg>
+            </div>
+            <div class="notif-title">Inbox</div>
+          </div>
+          <div class="notif select">
+            <div class="notif-image">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"
+                />
+              </svg>
+            </div>
+            <div class="notif-title">Today</div>
+          </div>
+          <div class="notif select">
+            <div class="notif-image">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 1H8V3H16V1H18V3H19C20.11 3 21 3.9 21 5V19C21 20.11 20.11 21 19 21H5C3.89 21 3 20.1 3 19V5C3 3.89 3.89 3 5 3H6V1M5 8V19H19V8H5M7 10H17V12H7V10Z"
+                />
+              </svg>
+            </div>
+            <div class="notif-title">Week</div>
+          </div>
+          <div class="notif select">
+            <div class="notif-image">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M 11,4L 13,4L 13,15L 11,15L 11,4 Z M 13,18L 13,20L 11,20L 11,18L 13,18 Z"
+                />
+              </svg>
+            </div>
+            <div class="notif-title">Important</div>
+          </div>
+          <div class="notif select">
+            <div class="notif-image">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M0.41,13.41L6,19L7.41,17.58L1.83,12M22.24,5.58L11.66,16.17L7.5,12L6.07,13.41L11.66,19L23.66,7M18,7L16.59,5.58L10.24,11.93L11.66,13.34L18,7Z"
+                />
+              </svg>
+            </div>
+            <div class="notif-title">Completed</div>
+          </div>
+        </div>
+        <div class="projects-container">
+          <div class="projects">
+            <div class="heading">Projects</div>
+            <div class="add-project">
+              <button id="showDialogBtn1" class="btn-project">
+                <svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                </svg>
+              </button>
+              <dialog id="exampleDialog1">
+                <div class="form-container">
+                  <form class="project-form" onsubmit="submitForm1(event)">
+                    <legend class="form-instructions">Add new project</legend>
+                    <div class="project-info input-group">
+                      <label for="project-title">Project title:</label>
+                      <input
+                        type="text"
+                        id="project-title"
+                        name="procjectTitle"
+                        placeholder="My project"
+                      />
+                      <span id="projectNameError" class="error"></span>
+                    </div>
+                    <div class="buttons-container">
+                      <button type="button" id="addAndClose">Add</button>
+                      <button type="button" id="closeDialogBtn1">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </dialog>
+            </div>
+          </div>
+          <div class="project-list"></div>
+        </div>
+      </div>
+      <main class="content">
+        <div class="section">
+          <div class="section-title">Inbox</div>
+        </div>
+        <div class="all-tasks"></div>
+      </main>
+    </div>
+  </body>
+</html>
