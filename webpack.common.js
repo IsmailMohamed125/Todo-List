@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -6,11 +7,13 @@ module.exports = {
     rules: [
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
-        generator: {
-          filename: "images/[name][hash][ext]",
-        },
         use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "images/[name].[ext]",
+            },
+          },
           {
             loader: "image-webpack-loader",
             options: {
@@ -37,4 +40,13 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/images", to: "images" },
+        // Add more patterns if needed
+      ],
+    }),
+    // ... other plugins
+  ],
 };

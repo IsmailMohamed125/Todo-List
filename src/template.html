@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do App</title>
+    <link
+      type="image/png"
+      sizes="16x16"
+      rel="icon"
+      href="images/icons8-to-do-list-16.png"
+    />
   </head>
   <body>
     <div class="wrapper">
@@ -27,7 +33,11 @@
               </button>
               <dialog id="exampleDialog">
                 <div class="form-container">
-                  <form class="task-form" onsubmit="submitForm(event)">
+                  <form
+                    class="task-form"
+                    autocomplete="off"
+                    onsubmit="submitForm(event)"
+                  >
                     <legend class="form-instructions">Add task</legend>
                     <div class="task-info">
                       <div class="task-title input-group">
@@ -170,7 +180,11 @@
               </button>
               <dialog id="exampleDialog1">
                 <div class="form-container">
-                  <form class="project-form" onsubmit="submitForm1(event)">
+                  <form
+                    class="project-form"
+                    autocomplete="off"
+                    onsubmit="submitForm1(event)"
+                  >
                     <legend class="form-instructions">Add new project</legend>
                     <div class="project-info input-group">
                       <label for="project-title">Project title:</label>

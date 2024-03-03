@@ -44,7 +44,7 @@ export function renderProject(data) {
           </button>
           <dialog class="edit-p">
     <div class="form-container">
-      <form class="edit-f">
+      <form autocomplete="off" class="edit-f">
         <legend class="form-instructions">Edit project</legend>
         <div class="project-info input-group">
           <label for="${date.name}">Project title:</label>
